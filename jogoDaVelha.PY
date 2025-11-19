@@ -12,13 +12,12 @@ def exibeTabuleiro():
         print('- - - - -')
         
 def jogada(linha, coluna):
-    global jogador
     tabuleiro[linha][coluna] = jogador
     if jogador == 'X':
-        jogador = 'O'
+        return 'O'
     else:
-        jogador = 'X'
+        return 'X'
 
-jogada(1,1)
-jogada(1,2)
+jogador = jogada(1,1)
+jogador = jogada(1,2)
 exibeTabuleiro()
