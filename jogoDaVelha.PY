@@ -12,12 +12,16 @@ def exibeTabuleiro():
         print('- - - - -')
         
 def jogada(linha, coluna):
+    if tabuleiro[linha][coluna] != ' ':
+        print('Jogada inválida!')
+        return jogador
     tabuleiro[linha][coluna] = jogador
-    if jogador == 'X':
-        return 'O'
-    else:
-        return 'X'
+    return 'O' if jogador == 'X' else 'X'
 
-jogador = jogada(1,1)
-jogador = jogada(1,2)
-exibeTabuleiro()
+
+while True:
+    print(f'Jogador da vez: {jogador}')
+    linha = int(input('Digite a linha: '))
+    coluna = int(input('Digite a coluna: '))
+    jogador = jogada(linha, coluna)
+    exibeTabuleiro
