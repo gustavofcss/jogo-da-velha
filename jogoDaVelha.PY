@@ -5,7 +5,7 @@ tabuleiro = [
 ]
 
 jogador = 'X'
-
+""" imprime o tabuleiro"""
 def exibeTabuleiro():
     for linha in tabuleiro:
         print('|'.join(linha))
@@ -59,6 +59,15 @@ def temGanhador():
 
     return False
 
+"""Verifica se deu empate"""
+def temEmpate():
+    for linha in range(3):
+        for coluna in range(3):
+            if tabuleiro[linha][coluna] == ' ':
+                return False
+    print('Acabou empatado!')
+    return True
+
 while True:
     print(f'Jogador da vez: {jogador}')
     try:
@@ -69,6 +78,6 @@ while True:
         print('Digite valores numéricos entre 0 e 2!')
     except ValueError:
         print('Os valores devem ser números inteiros!')
-    if temGanhador():
+    if temGanhador() or temEmpate:
         break
     exibeTabuleiro()
