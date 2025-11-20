@@ -22,6 +22,42 @@ def jogada(linha, coluna):
     tabuleiro[linha][coluna] = jogador
     return 'O' if jogador == 'X' else 'X'
 
+def temGanhador():
+    """Verifica as linhas"""
+    for linha in range(3):
+        if (
+            tabuleiro[linha][0] != ' ' and
+            tabuleiro[linha][0] == tabuleiro[linha][1] and
+            tabuleiro[linha][0] == tabuleiro[linha][2]
+        ):
+            print(f'{tabuleiro[linha][0]} venceu!!!')
+            return True
+    """Verifica as colunas"""
+    for coluna in range(3):
+            if (
+                tabuleiro[0][coluna] != ' ' and
+                tabuleiro[0][coluna] == tabuleiro[1][coluna] and
+                tabuleiro[0][coluna] == tabuleiro[2][coluna]
+            ):
+                print(f'{tabuleiro[0][coluna]} venceu!!!')
+                return True
+    """Verifica as diagonais"""
+    if (
+        tabuleiro[1][1] != ' ' and
+        (
+            tabuleiro[0][0] == tabuleiro[1][1] and
+            tabuleiro[0][0] == tabuleiro[2][2] 
+        ) or
+        (
+            tabuleiro[0][2] == tabuleiro[1][1] and
+            tabuleiro[1][1] == tabuleiro[2][0] 
+       
+         )
+    ):  
+        print(f'{tabuleiro[1][1]} GANHOU!!!')    
+        return True
+
+    return False
 
 while True:
     print(f'Jogador da vez: {jogador}')
@@ -33,4 +69,6 @@ while True:
         print('Digite valores numéricos entre 0 e 2!')
     except ValueError:
         print('Os valores devem ser números inteiros!')
+    if temGanhador():
+        break
     exibeTabuleiro()
