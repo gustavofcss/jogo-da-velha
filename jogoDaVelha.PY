@@ -45,6 +45,7 @@ def temGanhador():
     if (
         tabuleiro[1][1] != ' ' and
         (
+            (
             tabuleiro[0][0] == tabuleiro[1][1] and
             tabuleiro[0][0] == tabuleiro[2][2] 
         ) or
@@ -53,6 +54,7 @@ def temGanhador():
             tabuleiro[1][1] == tabuleiro[2][0] 
        
          )
+        )
     ):  
         print(f'{tabuleiro[1][1]} GANHOU!!!')    
         return True
@@ -78,6 +80,7 @@ while True:
         print('Digite valores numéricos entre 0 e 2!')
     except ValueError:
         print('Os valores devem ser números inteiros!')
-    if temGanhador() or temEmpate:
-        break
     exibeTabuleiro()
+    if temGanhador() or temEmpate():
+        break
+    
